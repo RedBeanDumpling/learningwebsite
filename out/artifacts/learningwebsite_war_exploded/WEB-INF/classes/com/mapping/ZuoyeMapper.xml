@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ZuoyeDAO">
+    <resultMap type="com.bean.Zuoye" id="BaseResultMap">
+      <id column="id" property="id" jdbcType="INTEGER"/>
+      <result column="stid" property="stid" jdbcType="VARCHAR"/>
+      <result column="tcid" property="tcid" jdbcType="VARCHAR"/>
+      <result column="kcid" property="kcid" jdbcType="VARCHAR"/>
+      <result column="zyid" property="zyid" jdbcType="VARCHAR"/>
+      <result column="filename" property="filename" jdbcType="VARCHAR"/>
+      <result column="savetime" property="savetime" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+    <insert id="add" parameterType="com.bean.Zuoye">
+      insert into Zuoye values(null,#{stid},#{tcid},#{kcid},#{zyid},#{filename},#{savetime})
+    </insert>
+    
+    <select id="selectAll" parameterType="HashMap" resultMap="BaseResultMap">
+      select * from Zuoye where 1=1 
+      <if test="stid!=null and stid!=''">
+        and stid=#{stid}
+      </if>
+      <if test="tcid!=null and tcid!=''">
+        and tcid=#{tcid}
+      </if>
+      order by id desc
+    </select>
+    
+    
+    
+    <delete id="delete" parameterType="Int">
+      delete from Zuoye where id=#{id}
+    </delete>
+    
+    
+	
+</mapper>
+

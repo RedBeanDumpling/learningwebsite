@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.KechenlrDAO">
+    <resultMap type="com.bean.Kechenlr" id="BaseResultMap">
+      <id column="id" property="id" jdbcType="INTEGER"/>
+      <result column="tcid" property="tcid" jdbcType="VARCHAR"/>
+      <result column="kcid" property="kcid" jdbcType="VARCHAR"/>
+      <result column="title" property="title" jdbcType="VARCHAR"/>
+      <result column="savetime" property="savetime" jdbcType="VARCHAR"/>
+      <result column="filename" property="filename" jdbcType="VARCHAR"/>
+      <result column="content" property="content" jdbcType="VARCHAR"/>
+      <result column="flag" property="flag" jdbcType="VARCHAR"/>
+      <result column="delstatus" property="delstatus" jdbcType="VARCHAR"/>
+      <result column="shstatus" property="shstatus" jdbcType="VARCHAR"/>
+        <result column="cs" property="cs" jdbcType="INTEGER"/>
+    </resultMap>
+    
+    <delete id="delete" parameterType="Int">
+      delete from kechenlr where id=#{id}
+    </delete>
+    
+    <update id="update" parameterType="com.bean.Kechenlr">
+      update Kechenlr
+      <set>
+        <if test="title!=null and title!=''"> title=#{title},</if>
+        <if test="filename!=null and filename!=''"> filename=#{filename},</if>
+        <if test="content!=null and content!=''"> content=#{content},</if>
+        <if test="savetime!=null and savetime!=''"> savetime=#{savetime},</if>
+        <if test="delstatus!=null and delstatus!=''"> delstatus=#{delstatus},</if>
+        <if test="shstatus!=null and shstatus!=''"> shstatus=#{shstatus},</if>
+          <if test="cs &gt; 0"> cs=#{cs},</if>
+      </set>
+      where id=#{id}
+    </update>
+    
+    <insert id="add" parameterType="com.bean.Kechenlr">
+      insert into Kechenlr values(null,#{tcid},#{kcid},#{title},#{filename},#{content},#{savetime},#{flag},#{delstatus},#{shstatus},#{cs})
+    </insert>
+    
+    <select id="selectAll" parameterType="HashMap" resultMap="BaseResultMap">
+      select * from Kechenlr where 1=1 and delstatus=0 
+      <if test="key!=null and key!=''">
+        and kcid in (select id from kechen where kcname like "%"#{key}"%") 
+      </if>
+      <if test="notin!=null and notin!=''">
+        and flag  &lt;&gt; #{notin}
+      </if>
+      <if test="flag!=null and flag!=''">
+        and flag=#{flag}
+      </if>
+      <if test="shstatus!=null and shstatus!=''">
+        and shstatus=#{shstatus}
+      </if>
+      <if test="kcid!=null and kcid!=''">
+        and kcid=#{kcid}
+      </if>
+      order by id desc
+    </select>
+    
+    <select id="findById" parameterType="com.bean.Kechenlr" resultType="com.bean.Kechenlr">
+      select * from Kechenlr where id=#{id}
+    </select>
+    
+    
+    
+	
+</mapper>
+

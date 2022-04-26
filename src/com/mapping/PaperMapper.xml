@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PaperDAO">
+    <resultMap type="com.bean.Paper" id="BaseResultMap">
+      <id column="id" property="id" jdbcType="INTEGER"/>
+      <result column="uuid" property="uuid" jdbcType="INTEGER"/>
+      <result column="kcid" property="kcid" jdbcType="INTEGER"/>
+      <result column="teacherid" property="teacherid" jdbcType="INTEGER"/>
+      <result column="title" property="title" jdbcType="VARCHAR"/>
+      <result column="testtime" property="testtime" jdbcType="INTEGER"/>
+      <result column="delstatus" property="delstatus" jdbcType="VARCHAR"/>
+      <result column="score" property="score" jdbcType="INTEGER"/>
+      
+    </resultMap>
+    
+    <select id="selectAll" parameterType="HashMap" resultMap="BaseResultMap">
+      select * from Paper where 1=1 and delstatus=0 
+      <if test="key!=null and key!=''">
+        and title like "%"#{key}"%"
+      </if>
+      <if test="kcid != null and kcid != ''">
+        and kcid = #{kcid} 
+      </if>
+      <if test="teacherid != null and teacherid != ''">
+        and teacherid = #{teacherid} 
+      </if>
+      order by id desc
+    </select>
+    
+    <insert id="add" parameterType="com.bean.Paper">
+      insert into Paper values(null,#{uuid},#{kcid},#{teacherid},#{title},#{testtime},#{delstatus},#{score})
+    </insert>
+    
+    <update id="update" parameterType="com.bean.Paper">
+      update Paper
+      <set>
+        <if test="kcid!=null and kcid!=''">
+          kcid=#{kcid},
+        </if>
+        <if test="title != null and title != ''">
+          title=#{title},
+        </if>
+        <if test="testtime != null and testtime != ''">
+          testtime=#{testtime},
+        </if>
+        <if test="delstatus != null and delstatus != ''">
+          delstatus=#{delstatus},
+        </if>
+      </set>
+      where id=#{id}
+    </update>
+    
+    <select id="findById" parameterType="com.bean.Paper" resultType="com.bean.Paper">
+      select * from Paper where id=#{id}
+    </select>
+    
+    <delete id="delete" parameterType="Int">
+      delete from Paper where id=#{id}
+    </delete>
+    
+    
+	
+</mapper>

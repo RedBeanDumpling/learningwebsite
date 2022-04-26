@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AnswersDAO">
+    <resultMap type="com.bean.Answers" id="BaseResultMap">
+      <id column="id" property="id" jdbcType="INTEGER"/>
+      <result column="questionid" property="questionid" jdbcType="VARCHAR"/>
+      <result column="option_" property="option" jdbcType="VARCHAR"/>
+      <result column="content" property="content" jdbcType="VARCHAR"/>
+      
+    </resultMap>
+    
+    <select id="selectAll" parameterType="HashMap" resultMap="BaseResultMap">
+      select * from Answers where 1=1 
+      <if test="questionid != null and questionid != ''">
+        and questionid = #{questionid} 
+      </if>
+      order by option_ 
+    </select>
+    
+    <insert id="add" parameterType="com.bean.Answers">
+      insert into Answers values(null,#{questionid},#{option},#{content})
+    </insert>
+    
+    
+    
+    <select id="findById" parameterType="com.bean.Answers" resultType="com.bean.Questions">
+      select * from Answers where id=#{id}
+    </select>
+    
+    <delete id="delete" parameterType="Int">
+      delete from Answers where id=#{id}
+    </delete>
+    
+    
+	
+</mapper>
+

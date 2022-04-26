@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.PaperdetailDAO">
+    <resultMap type="com.bean.Paperdetail" id="BaseResultMap">
+      <id column="id" property="id" jdbcType="INTEGER"/>
+      <result column="qno" property="qno" jdbcType="INTEGER"/>
+      <result column="paperid" property="paperid" jdbcType="VARCHAR"/>
+      <result column="questionid" property="questionid" jdbcType="INTEGER"/>
+      <result column="type" property="type" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+    <select id="selectAll" parameterType="HashMap" resultMap="BaseResultMap">
+      select * from Paperdetail where 1=1 
+      <if test="paperid != null and paperid != ''">
+        and paperid = #{paperid} 
+      </if>
+      <if test="questionid != null and questionid != ''">
+        and questionid = #{questionid} 
+      </if>
+      <if test="type != null and type != ''">
+        and type = #{type} 
+      </if>
+      
+      order by qno 
+    </select>
+    
+    <insert id="add" parameterType="com.bean.Paperdetail">
+      insert into Paperdetail values(null,#{qno},#{paperid},#{questionid},#{type})
+    </insert>
+    
+    
+    
+    <select id="findById" parameterType="com.bean.Paperdetail" resultType="com.bean.Paperdetail">
+      select * from Paperdetail where id=#{id}
+    </select>
+    
+    <delete id="delete" parameterType="Int">
+      delete from Paperdetail where id=#{id}
+    </delete>
+    
+    
+	
+</mapper>
+
+
+
+
