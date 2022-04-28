@@ -6,7 +6,9 @@ import com.bean.Zuoye;
 
 
 public interface ZuoyeDAO {
-	List<Zuoye> selectAll(HashMap map);
+    Zuoye findZuoyeById(int id);
+
+    List<Zuoye> selectAll(HashMap map);
 	void add(Zuoye zuoye);
 	void delete(int id);
 }

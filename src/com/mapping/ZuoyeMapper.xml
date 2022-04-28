@@ -33,6 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <delete id="delete" parameterType="Int">
       delete from Zuoye where id=#{id}
     </delete>
+
+    <select id="findZuoyeById" parameterType="com.bean.Zuoye" resultType="com.bean.Zuoye">
+        select * from zuoye where id=#{id}
+    </select>
+
     
     
 	
