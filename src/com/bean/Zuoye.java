@@ -18,11 +18,11 @@ public class Zuoye implements Serializable {
 	private Kechen kechen;
 	private Kechenlr zy;
 	//422add
-	private boolean isChecked;
-
-
-
+	private int isChecked;
+	private String pigaitime;
 	private int score=0;
+	private String filename_after;
+
 
 
 	
@@ -97,10 +97,25 @@ public class Zuoye implements Serializable {
 		this.savetime = savetime;
 	}
 	//new setter and getter
-	public boolean getIsChecked(){return isChecked;}
-	public void setIsChecked(boolean isChecked){this.isChecked=isChecked;}
+	public int getIsChecked(){return isChecked;}
+	public void setIsChecked(int isChecked){this.isChecked=isChecked;}
 	public int getScore() {return score;}
 	public void setScore(int score) {this.score = score;}
+	public String getFilename_after() {
+		return filename_after;
+	}
+
+	public void setFilename_after(String filename_after) {
+		this.filename_after = filename_after;
+	}
+	public String getPigaitime() {
+		return pigaitime;
+	}
+
+	public void setPigaitime(String pigaitime) {
+		this.pigaitime = pigaitime;
+	}
+
 	
 	
 	

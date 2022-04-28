@@ -43,6 +43,7 @@
     <url-pattern>*.do</url-pattern>
     <url-pattern>*.jsp</url-pattern>
   </filter-mapping>
+<!--  servlet配置-->
   <servlet>
     <servlet-name>springmvc</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>

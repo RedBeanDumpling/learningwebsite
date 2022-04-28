@@ -103,7 +103,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a class="layui-btn layui-btn-danger layui-btn-mini" href="zuoyeDel.do?id=${zuoye.id}">删除</a>
 
 <%--								<a class="layui-btn layui-btn-danger layui-btn-mini" href="pigai.jsp?id=${zuoye.id}">批改</a>--%>
-                                <a class="layui-btn layui-btn-danger layui-btn-mini" href="jPainter.jsp">批改</a>
+                                <a class="layui-btn layui-btn-danger layui-btn-mini" href="jPainter.do?id=${zuoye.id}">批改</a>
 
 							</td>
 						</tr>

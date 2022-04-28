@@ -130,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs" style="padding-left:8px;">
 			  <ul id="myTab">
 			  <c:forEach items="${aclist}" var="activity">
-			  <li ><a href="activityx.do?id=${activity.id}" class="activitytitle">${activity.title }</a></li>
+			  <li ><a href="activityx.do?id=${activity.id}" class="activitytitle">${activity.title}</a></li>
 			  </c:forEach>
 			</ul>
 		   </div>

@@ -7,6 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
+
+import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -108,9 +110,12 @@ public class ActivityController{
 	//公告信息详情页面
 	@RequestMapping("activityx")
 	public String activityx(int id,HttpServletRequest request) {
+        //根据传来的信息进行查询
+        //TODO
 		Activity activity = activityDAO.findById(id);
 		request.setAttribute("activity", activity);
 		return "activity";
+
 	}
 	
 
