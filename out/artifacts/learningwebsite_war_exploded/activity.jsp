@@ -85,8 +85,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	  
 	</style>
 	<div class="support-center">
-	<section class="help-center">	
-		</section>
+		<section class="help-center">
+
 			<div class="support-grid">
   	 		<h3>${activity.title}</h3>
   	 		<ul class="activitysx">
@@ -97,8 +97,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   	 		<img src="upload/${activity.filename}"/>
   	 		</c:if>
   	 		<p style="margin-top: 40px;">${activity.content}</p>
-  	   
-  	   </div>
+		</section>
+	</div>
 	</div>
 	</div>
 			<div class="clearfix"></div>

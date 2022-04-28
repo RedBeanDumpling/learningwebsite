@@ -21,8 +21,10 @@
     <script type="text/javascript" src="js/anyLine.js"></script>
     <script type="text/javascript" src="colorpicker-master/jquery.colorpicker.js"></script>
     <script type="text/javascript" src="colorpicker-master/parts/jquery.ui.colorpicker-rgbslider.js"></script>
-<%--    <script type="text/javascript" src="js/json2.js"></script>--%>
+<%--    去掉下面一行--%>
+    <script type="text/javascript" src="js/json2.js"></script>
     <script type="text/javascript" src="js/canvas.js"></script>
+    <script src="js/canvas2image.js"></script>
     <style type="text/css">
         * {
             font-family: '微软雅黑';
@@ -61,7 +63,7 @@
 </head>
 <body>
 <div id="containerAll" class="div_display">
-    <div title="HTML画板" style="width:100%;height: 100%;">
+    <div id="dialog" title="HTML画板" style="width:100%;height: 100%;">
         <div style="font-size:14px;">
             <fieldset style="float:left;width:250px;">
                 <legend>工具</legend>
@@ -144,7 +146,7 @@
 
         <div style="background:white;position:relative;" id="container">
             <div id="temp" style="border:1px solid gray;width:1px;height:1px;position:absolute;display:none;"></div>
-
+<%--            TODO--%>
             <canvas id="myCanvas" width="2560" height="800" class="container_pencil">
 
             </canvas>
@@ -161,4 +163,18 @@
 
 
 </body>
+    <script>
+        //this is the script of loading and drawing picture of selected zuoye
+        let c=document.getElementById("myCanvas");
+        let canvas=c.getContext("2d");
+        let img = new Image();
+        img.src = "./images/b3.jpg";
+        img.onload = function (e) {
+            drawImg(this);
+        };
+        function drawImg (img) {
+            canvas.clearRect(0,0, c.width, c.height);
+            canvas.drawImage(img, 0,0,c.width, c.height);
+        }
+    </script>
 </html>
