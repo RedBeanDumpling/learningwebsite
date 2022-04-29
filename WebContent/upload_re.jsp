@@ -73,6 +73,7 @@ response.setCharacterEncoding("utf-8");
     				}
     				//保存文件
     				newFile1Name=new Date().getTime()+tFileName.substring(tFileName.indexOf("."));
+					//写入文件
     				item.write(new File(saveurl +"/"+ newFile1Name));
     			}
     		}

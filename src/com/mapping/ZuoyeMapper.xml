@@ -11,10 +11,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <result column="zyid" property="zyid" jdbcType="VARCHAR"/>
       <result column="filename" property="filename" jdbcType="VARCHAR"/>
       <result column="savetime" property="savetime" jdbcType="VARCHAR"/>
+
     </resultMap>
     
     <insert id="add" parameterType="com.bean.Zuoye">
-      insert into Zuoye values(null,#{stid},#{tcid},#{kcid},#{zyid},#{filename},#{savetime})
+      insert into Zuoye values(null,#{stid},#{tcid},#{kcid},#{zyid},#{filename},#{savetime},0,null,0,null)
     </insert>
     
     <select id="selectAll" parameterType="HashMap" resultMap="BaseResultMap">

@@ -91,7 +91,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<input type="hidden" name="kcid" value="${kcid}">
 					
 						<p class="your-para">上传作业:</p>
-						<input name='filename' type='text' class="layui-input" lay-verify="required"   id='url' required size='50' value='' />&nbsp;<input type='button' value='上传'  class="layui-input" onClick="up('url')" style="width: 60px;height: 37px;"/>
+						<input name='filename' type='text' class="layui-input" lay-verify="required"   id='url' required size='50' value='' />&nbsp;
+						<input type='button' value='上传'  class="layui-input" onClick="up('url')" style="width: 60px;height: 37px;"/>
 						
 						<div class="send" style="margin-top: 20px;">
 							<input type="submit" value="提交" >
@@ -177,6 +178,8 @@ function up(tt)
 		      content: 'upload.jsp?Result='+tt
 		    });
 }
+
+
 </script>
 <c:if test="${msg ne null and msg ne ''}">
 <script>

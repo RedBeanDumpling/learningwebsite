@@ -168,13 +168,14 @@
         let c=document.getElementById("myCanvas");
         let canvas=c.getContext("2d");
         let img = new Image();
-        img.src = "./images/b3.jpg";
+        // img.src = "./images/b3.jpg";
+        img.src="./upload/${zuoye.filename}";
         img.onload = function (e) {
             drawImg(this);
         };
         function drawImg (img) {
             canvas.clearRect(0,0, c.width, c.height);
-            canvas.drawImage(img, 0,0,c.width, c.height);
+            canvas.drawImage(img, 0,0);
         }
     </script>
 </html>

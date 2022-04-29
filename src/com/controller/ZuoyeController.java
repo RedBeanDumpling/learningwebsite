@@ -128,13 +128,14 @@ public class ZuoyeController{
 		return "redirect:skipzuoye.do?kcid="+kcid+"&zyid="+zuoye.getZyid();
 	}
 	
-	//跳转
+	//跳转到提交作业
 	@RequestMapping("skipzuoye")
 	public String skipzuoye(HttpServletRequest request,RedirectAttributes redirectAttributes) {
+        //查询课程id和作业id
 		String zyid = request.getParameter("zyid");
 		String kcid = request.getParameter("kcid");
 		Kechenlr kechenlr = kechenlrDAO.findById(Integer.parseInt(zyid));
-		if(Info.compare_datezq(Info.getDateStr().substring(0,10), kechenlr.getSavetime()).equals("big")){
+		if(Info.compare_datezq(Info.getDateStr().substring(0,10), kechenlr.getSavetime()).equals("big")){ //判断作业是否超时
 			redirectAttributes.addFlashAttribute("msg","已超时不能提交");
 			return "redirect:kechenDetails.do?id="+kcid;
 		}else{
@@ -163,44 +164,12 @@ public class ZuoyeController{
 
 
     //前台作业列表
-    //初版
-//    @RequestMapping("jPainter")
-//    public String jPainter(@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum, @RequestParam(defaultValue = "10",value = "pageSize") Integer pageSize, HttpServletRequest request) {
-//        Member member = (Member)request.getSession().getAttribute("sessionmember");
-//        HashMap map = new HashMap();
-//        map.put("stid", member.getId());
-//        List<Zuoye> list = zuoyeDAO.selectAll(map);
-//        for(Zuoye zuoye:list){
-//            Kechen kechen = kechenDAO.findById(Integer.parseInt(zuoye.getKcid()));
-//            zuoye.setKechen(kechen);
-//            Kechenlr zy = kechenlrDAO.findById(Integer.parseInt(zuoye.getZyid()));
-//            zuoye.setZy(zy);
-//            Member teacher = memberDAO.findById(Integer.parseInt(zuoye.getTcid()));
-//            zuoye.setTeacher(teacher);
-//        }
-//        PageHelper.startPage(pageNum, pageSize);
-//        List<Zuoye> objectlist = zuoyeDAO.selectAll(map);
-//        for(Zuoye zuoye:objectlist){
-//            Kechen kechen = kechenDAO.findById(Integer.parseInt(zuoye.getKcid()));
-//            zuoye.setKechen(kechen);
-//            Kechenlr zy = kechenlrDAO.findById(Integer.parseInt(zuoye.getZyid()));
-//            zuoye.setZy(zy);
-//            Member teacher = memberDAO.findById(Integer.parseInt(zuoye.getTcid()));
-//            zuoye.setTeacher(teacher);
-//        }
-//        PageInfo<Zuoye> pageInfo = new PageInfo<Zuoye>(objectlist);
-//        request.setAttribute("pageInfo", pageInfo);
-//        request.setAttribute("list", list);
-//        request.setAttribute("pageNum", pageNum);
-//        request.setAttribute("pageSize", pageSize);
-//        return "jPainter";
-//    }
     @RequestMapping("jPainter")
     public String jPainter(int id,HttpServletRequest request){
         //TODO
         Zuoye zuoye=zuoyeDAO.findZuoyeById(id);
-        request.setAttribute("jPainter",zuoye);
-        //System.out.println("zuoye.id="+zuoye.getId()+"zuoye.stid"+zuoye.getStid()+"   :tuzi");
+        request.setAttribute("zuoye",zuoye);
+        System.out.println("zuoye.id="+zuoye.getId()+"zuoye.stid"+zuoye.getFilename()+"   :tuzi");
         return "jPainter";
     }
 
